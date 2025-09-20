@@ -1,0 +1,67 @@
+### GET all books
+GET http://localhost:8080/books
+
+### GET single book by ID
+GET http://localhost:8080/books/64c81d6d5f5e4e3c4e5e2d8e
+
+### POST new book
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "title": "The Alchemist",
+  "author": "Paulo Coelho",
+  "genre": "Fiction",
+  "isbn": "9780061122415",
+  "pages": 208,
+  "publishedDate": "1988-04-15",
+  "summary": "A journey of self-discovery."
+}
+
+### PUT update book
+PUT http://localhost:8080/books/64c81d6d5f5e4e3c4e5e2d8e
+Content-Type: application/json
+
+{
+  "title": "The Alchemist (Updated)",
+  "author": "Paulo Coelho",
+  "genre": "Fiction",
+  "isbn": "9780061122415",
+  "pages": 210,
+  "publishedDate": "1988-04-15",
+  "summary": "An updated journey of self-discovery."
+}
+
+### DELETE book
+DELETE http://localhost:8080/books/64c81d6d5f5e4e3c4e5e2d8e
+
+---
+
+### GET all authors
+GET http://localhost:8080/authors
+
+### GET single author by ID
+GET http://localhost:8080/authors/64c81e2a5f5e4e3c4e5e2d9f
+
+### POST new author
+POST http://localhost:8080/authors
+Content-Type: application/json
+
+{
+  "name": "Chinua Achebe",
+  "birthdate": "1930-11-16",
+  "nationality": "Nigerian"
+}
+
+### PUT update author
+PUT http://localhost:8080/authors/64c81e2a5f5e4e3c4e5e2d9f
+Content-Type: application/json
+
+{
+  "name": "Chinua Achebe",
+  "birthdate": "1930-11-16",
+  "nationality": "Nigerian (Updated)"
+}
+
+### DELETE author
+DELETE http://localhost:8080/authors/64c81e2a5f5e4e3c4e5e2d9f
