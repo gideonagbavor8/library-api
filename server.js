@@ -22,7 +22,7 @@ const bookRoutes = require('./routes/books');
 const authorRoutes = require('./routes/authors');
 
 app.use('/books', bookRoutes);
-app.use('/authors', authorRoutes);
+// app.use('/authors', authorRoutes);
 
 // const authorRoutes = require('./routes/authors');
 app.use('/authors', authorRoutes);
