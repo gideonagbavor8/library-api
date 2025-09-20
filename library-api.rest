@@ -2,7 +2,7 @@
 GET http://localhost:8080/books
 
 ### GET single book by ID
-GET http://localhost:8080/books/64c81d6d5f5e4e3c4e5e2d8e
+GET http://localhost:8080/books/68cdd51d6e6552c3a92906f5
 
 ### POST new book
 POST http://localhost:8080/books
@@ -12,7 +12,7 @@ Content-Type: application/json
   "title": "The Alchemist",
   "author": "Paulo Coelho",
   "genre": "Fiction",
-  "isbn": "9780061122415",
+  "isbn": "9780061122416",
   "pages": 208,
   "publishedDate": "1988-04-15",
   "summary": "A journey of self-discovery."
