@@ -10,10 +10,10 @@ const options = {
       description: 'API for managing books and authors',
     },
     servers: [
-      {
-        url: 'http://localhost:8080',
-        description: 'Local development server'
-      },
+      // {
+      //   url: 'http://localhost:8080',
+      //   description: 'Local development server'
+      // },
       {
         url: 'https://library-api-rpui.onrender.com',
         description: 'Deployed API on Render'
