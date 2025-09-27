@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bookController = require('../controllers/books');
-
+const ensureAuth = require('../middleware/auth');
 
 // Swagger Comments
 /**
@@ -10,7 +10,6 @@ const bookController = require('../controllers/books');
  *   name: Books
  *   description: API for managing books
  */
-
 
 /**
  * @swagger
@@ -24,7 +23,10 @@ const bookController = require('../controllers/books');
  */
 // GET all books
 router.get('/', bookController.getAllBooks);
-
+// Add this route for testing
+router.get('/test-auth', ensureAuth, (req, res) => {
+  res.json({ message: 'You are authenticated' });
+});
 
 /**
  * @swagger
@@ -47,7 +49,6 @@ router.get('/', bookController.getAllBooks);
 // GET single book
 router.get('/:id', bookController.getSingleBook);
 
-
 /**
  * @swagger
  * /books:
@@ -65,10 +66,11 @@ router.get('/:id', bookController.getSingleBook);
  *         description: Book created
  *       400:
  *         description: Validation error
+ *     security:
+ *       - cookieAuth: []
  */
 // POST new book
-router.post('/', bookController.createBook);
-
+router.post('/', ensureAuth, bookController.createBook);
 
 /**
  * @swagger
@@ -76,6 +78,8 @@ router.post('/', bookController.createBook);
  *   put:
  *     summary: Update a book by ID
  *     tags: [Books]
+ *     security:
+ *       - cookieAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -97,8 +101,7 @@ router.post('/', bookController.createBook);
  *         description: Book not found
  */
 // PUT update book
-router.put('/:id', bookController.updateBook);
-
+router.put('/:id', ensureAuth, bookController.updateBook);
 
 /**
  * @swagger
@@ -106,6 +109,8 @@ router.put('/:id', bookController.updateBook);
  *   delete:
  *     summary: Delete a book by ID
  *     tags: [Books]
+ *     security:
+ *       - cookieAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -119,6 +124,6 @@ router.put('/:id', bookController.updateBook);
  *         description: Book not found
  */
 // DELETE book
-router.delete('/:id', bookController.deleteBook);
+router.delete('/:id', ensureAuth, bookController.deleteBook);
 
 module.exports = router;

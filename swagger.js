@@ -42,8 +42,20 @@ const options = {
             birthdate: { type: 'string', format: 'date', example: '1930-11-16' },
             nationality: { type: 'string', example: 'Nigerian' }
           }
+        },
+        securitySchemes: {
+          cookieAuth: {
+            type: 'apiKey',
+            in: 'cookie',
+            name: 'connect.sid'
+          }
         }
-      }
+      },
+      security: [
+        {
+          cookieAuth: []
+        }
+      ]
     }
   },
   apis: ['./routes/*.js'],

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authorController = require('../controllers/authors');
+const ensureAuth = require('../middleware/auth');
 
 // Swagger Comments
 /**
@@ -65,7 +66,7 @@ router.get('/:id', authorController.getSingleAuthor);
  *         description: Validation error
  */
 // POST new author
-router.post('/', authorController.createAuthor);
+router.post('/', ensureAuth, authorController.createAuthor);
 
 
 /**
@@ -95,7 +96,7 @@ router.post('/', authorController.createAuthor);
  *         description: Author not found
  */
 // PUT update author
-router.put('/:id', authorController.updateAuthor);
+router.put('/:id', ensureAuth, authorController.updateAuthor);
 
 
 /**
@@ -117,6 +118,6 @@ router.put('/:id', authorController.updateAuthor);
  *         description: Author not found
  */
 // DELETE author
-router.delete('/:id', authorController.deleteAuthor);
+router.delete('/:id', ensureAuth, authorController.deleteAuthor);
 
 module.exports = router;
