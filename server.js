@@ -22,7 +22,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false, // prevents empty sessions
   cookie: {
-    secure: false, // true only if using HTTPS
+    secure: true, // true only if using HTTPS
+    sameSite: 'none', // Allow cross-site cookies for OAuth
     maxAge: 24 * 60 * 60 * 1000 // 1 day
   }
 }));
