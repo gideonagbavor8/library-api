@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bookController = require('../controllers/books');
 const ensureAuth = require('../middleware/auth');
+const passport = require('passport');
+require('../auth/jwt'); 
 
 // Swagger Comments
 /**
@@ -67,10 +69,10 @@ router.get('/:id', bookController.getSingleBook);
  *       400:
  *         description: Validation error
  *     security:
- *       - cookieAuth: []
+ *       - bearerAuth: []
  */
 // POST new book
-router.post('/', ensureAuth, bookController.createBook);
+router.post('/', passport.authenticate('jwt', { session: false }), bookController.createBook);
 
 /**
  * @swagger
@@ -79,7 +81,7 @@ router.post('/', ensureAuth, bookController.createBook);
  *     summary: Update a book by ID
  *     tags: [Books]
  *     security:
- *       - cookieAuth: []
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -101,7 +103,7 @@ router.post('/', ensureAuth, bookController.createBook);
  *         description: Book not found
  */
 // PUT update book
-router.put('/:id', ensureAuth, bookController.updateBook);
+router.put('/:id', passport.authenticate('jwt', { session: false }), bookController.updateBook);
 
 /**
  * @swagger
@@ -110,7 +112,7 @@ router.put('/:id', ensureAuth, bookController.updateBook);
  *     summary: Delete a book by ID
  *     tags: [Books]
  *     security:
- *       - cookieAuth: []
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -124,6 +126,6 @@ router.put('/:id', ensureAuth, bookController.updateBook);
  *         description: Book not found
  */
 // DELETE book
-router.delete('/:id', ensureAuth, bookController.deleteBook);
+router.delete('/:id', passport.authenticate('jwt', { session: false }), bookController.deleteBook);
 
 module.exports = router;

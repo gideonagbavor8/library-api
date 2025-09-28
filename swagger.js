@@ -44,16 +44,16 @@ const options = {
           }
         },
         securitySchemes: {
-          cookieAuth: {
-            type: 'apiKey',
-            in: 'cookie',
-            name: 'connect.sid'
+          bearerAuth: {
+            type: 'http',
+            in: 'bearer',
+            name: 'JWT',
           }
         }
       },
       security: [
         {
-          cookieAuth: []
+          bearerAuth: []
         }
       ]
     }
