@@ -7,7 +7,16 @@ const options = {
     info: {
       title: 'Library API',
       version: '1.0.0',
-      description: 'API for managing books and authors',
+      description: 
+      `API for managing books and authors.<br>
+       <b>How to use protected endpoints:</b>
+      <ol>
+        <li>Authenticate via <a href="/auth/google" target="_blank">/auth/google</a>.</li>
+        <li>Copy the JWT token shown after login.</li>
+        <li>Click the <b>Authorize</b> button in Swagger UI and paste your token as <code>Bearer &lt;your-token&gt;</code>.</li>
+      </ol>
+      `
+
     },
     servers: [
       {
