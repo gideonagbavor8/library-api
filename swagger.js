@@ -10,16 +10,19 @@ const options = {
       description: 'API for managing books and authors',
     },
     servers: [
-      // {
-      //   url: 'http://localhost:8080',
-      //   description: 'Local development server'
-      // },
       {
         url: 'https://library-api-rpui.onrender.com',
         description: 'Deployed API on Render'
       }
-],
+    ],
     components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT'
+        }
+      },
       schemas: {
         Book: {
           type: 'object',
@@ -42,21 +45,14 @@ const options = {
             birthdate: { type: 'string', format: 'date', example: '1930-11-16' },
             nationality: { type: 'string', example: 'Nigerian' }
           }
-        },
-        securitySchemes: {
-          bearerAuth: {
-            type: 'http',
-            in: 'bearer',
-            name: 'JWT',
-          }
         }
-      },
-      security: [
-        {
-          bearerAuth: []
-        }
-      ]
-    }
+      }
+    },
+    security: [
+      {
+        bearerAuth: []
+      }
+    ]
   },
   apis: ['./routes/*.js'],
 };
